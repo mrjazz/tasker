@@ -16,9 +16,6 @@ class Task:
     def execute(self):
         pass
 
-    def type(self):
-        return self.__class__.__name__
-
     def __str__(self):
         return self.url
 
@@ -28,7 +25,7 @@ class ShellTask(Task):
     TYPE = "SHELL"
 
     def execute(self):
-        cmd = (SCRIPT_PATH + " " + self.url).split(" ")
+        cmd = (SCRIPT_PATH % self.url).split(" ")
         print "   Call: %s\n" % cmd
         subprocess.call(cmd)
 
